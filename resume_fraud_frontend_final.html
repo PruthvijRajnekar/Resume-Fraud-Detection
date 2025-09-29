@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Fraud Detection System</title>
+    <link rel="stylesheet" href="resume_fraud_frontend.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📝 Resume Fraud Detection</h1>
+            <p>Advanced AI-powered system to analyze resume authenticity and detect potential fraud</p>
+        </header>
+
+        <div class="main-content">
+            <div class="input-section">
+                <h2>📄 Upload or Paste Resume</h2>
+                
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📎</div>
+                    <div class="upload-text">Drag & drop your resume file here</div>
+                    <div class="upload-text">or</div>
+                    <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                        Choose File
+                    </button>
+                    <input type="file" id="fileInput" class="file-input" accept=".txt,.pdf,.doc,.docx">
+                </div>
+
+                <div class="textarea-container">
+                    <textarea 
+                        class="resume-textarea" 
+                        id="resumeText" 
+                        placeholder="Or paste your resume text here...
+Example format:
+John Smith
+Email: john.smith@email.com
+Phone: 555-123-4567
+
+Experience:
+Software Engineer at Tech Corp (2020-2023)
+- Developed web applications
+- Led team of 5 developers
+
+Education:
+Bachelor of Computer Science
+State University (2016-2020)
+
+Skills: Python, JavaScript, SQL"
+                    ></textarea>
+                </div>
+
+                <button class="analyze-btn" id="analyzeBtn" onclick="analyzeResume()">
+                    📝 Analyze Resume
+                </button>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Analyzing resume with AI models...</p>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <h2>📊 Analysis Results</h2>
+                
+                <div id="noResults" style="text-align: center; color: #6c757d; padding: 40px;">
+                    <div style="font-size: 4rem; margin-bottom: 20px;">🤯</div>
+                    <p>Upload or paste a resume to start the analysis</p>
+                </div>
+
+                <div class="results" id="results">
+                    <div class="risk-score">
+                        <div class="risk-meter">
+                            <div class="risk-circle">
+                                <span class="risk-value" id="riskValue">0%</span>
+                            </div>
+                        </div>
+                        <div class="risk-label" id="riskLabel">Risk Level</div>
+                    </div>
+
+                    <div class="analysis-details">
+                        <div class="detail-card">
+                            <div class="detail-title">📝 Word Count</div>
+                            <div class="detail-value" id="wordCount">-</div>
+                        </div>
+                        <div class="detail-card">
+                            <div class="detail-title">🧭 Experience Years</div>
+                            <div class="detail-value" id="experienceYears">-</div>
+                        </div>
+                        <div class="detail-card">
+                            <div class="detail-title">📊 Readability Score</div>
+                            <div class="detail-value" id="readabilityScore">-</div>
+                        </div>
+                        <div class="detail-card">
+                            <div class="detail-title">⚠️ Inconsistencies</div>
+                            <div class="detail-value" id="inconsistencies">-</div>
+                        </div>
+                    </div>
+
+                    <div class="red-flags" id="redFlags">
+                        <h3>🛑 Red Flags Detected</h3>
+                        <div id="flagsList"></div>
+                    </div>
+
+                    <div class="recommendations">
+                        <h3>💡 Recommendations</h3>
+                        <div id="recommendationsList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="resume_fraud_frontend.js"></script>
+</body>
+</html>
